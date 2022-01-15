@@ -31,11 +31,11 @@
     @apply font-medium text-body text-black-full;
   }
 
-  p.type-overline {
+  .type-overline {
     @apply font-normal uppercase text-overline text-orange-full;
   }
 
-  p.type-subtitle {
+  .type-subtitle {
     @apply font-bold uppercase text-subtitle text-orange-full;
   }
 }

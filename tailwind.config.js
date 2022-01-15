@@ -29,6 +29,7 @@ module.exports = {
 
     extend: {
       fontSize: {
+        xsm: '0.813rem',
         h1: [
           '3.5rem',
           {
@@ -94,6 +95,18 @@ module.exports = {
             lineHeight: '1.563rem',
           },
         ],
+      },
+
+      letterSpacing: {
+        'style-button': '0.063rem',
+      },
+
+      padding: {
+        app: '1.438rem',
+      },
+
+      spacing: {
+        22: '5.75rem',
       },
     },
   },
