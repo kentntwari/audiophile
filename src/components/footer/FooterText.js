@@ -1,8 +1,11 @@
 import React from 'react';
 
-const FooterText = ({ style, text }) => {
+const FooterText = ({ customClassValue, text }) => {
   return (
-    <p className={`${style ? style : ''} text-center text-white-full opacity-50`}>
+    <p
+      className={`${
+        customClassValue ? customClassValue : ''
+      } text-center text-white-full opacity-50`}>
       {text}
     </p>
   );

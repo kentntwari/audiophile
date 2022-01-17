@@ -1,13 +1,11 @@
 import React from 'react';
-import Header from './components/Header';
-import Products from './components/Products';
+import FeaturedProduct from './components/FeaturedProduct';
 
 const Home = () => {
   return (
-    <div className="w-full flex flex-col gap-22">
-      <Header />
-      <Products />
-    </div>
+    <main className="w-full flex flex-col gap-22">
+      <FeaturedProduct />
+    </main>
   );
 };
 

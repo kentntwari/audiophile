@@ -2,9 +2,11 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     screens: {
-      sm: '375px',
-      md: '768px',
-      lg: '1440px',
+      sm: { min: '375px', max: '640px' },
+      md: { min: '641px', max: '767px' },
+      lg: { min: '768px', max: '1024px' },
+      xl: { min: '1025px', max: '1280px' },
+      '2xl': { min: '1281px', max: '1440px' },
     },
 
     fontFamily: {
@@ -103,10 +105,12 @@ module.exports = {
 
       padding: {
         app: '1.438rem',
+        22: '5.5rem',
       },
 
       spacing: {
         22: '5.75rem',
+        30: '7.5rem',
       },
     },
   },

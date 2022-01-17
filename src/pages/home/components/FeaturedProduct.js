@@ -2,14 +2,18 @@ import React from 'react';
 import featuredImageMobile from '../../../utilities/images/mobile/image-header.jpg';
 import ButtonOrange from '../../../components/buttons/ButtonOrange';
 
-const Header = () => {
+const FeaturedProduct = () => {
   return (
-    <header className="relative p-app flex h-[510px]">
-      <div className="absolute -top-[90px] left-0">
-        <img src={featuredImageMobile} alt="featured-mobile" />
+    <article className="relative p-app flex h-[510px]">
+      <div className="w-full absolute -top-[90px] left-0">
+        <img
+          className="object-cover w-full h-[600px]"
+          src={featuredImageMobile}
+          alt="featured-mobile"
+        />
       </div>
 
-      <div className="relative z-10 margin-auto flex flex-col items-center justify-center gap-6">
+      <section className="relative z-10 margin-auto flex flex-col items-center justify-center gap-6">
         <p className="uppercase text-white-full text-[14px] tracking-[10px]">
           New Product
         </p>
@@ -24,9 +28,9 @@ const Header = () => {
         </p>
 
         <ButtonOrange />
-      </div>
-    </header>
+      </section>
+    </article>
   );
 };
 
-export default Header;
+export default FeaturedProduct;

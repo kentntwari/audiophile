@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Navigation = () => {
+const Links = () => {
   return (
     <ul className="w-full text-center flex flex-col gap-4">
       <li>
@@ -29,4 +29,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default Links;
