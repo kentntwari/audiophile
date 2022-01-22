@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import sanityClient from '../../client';
 
 const Links = () => {
@@ -13,20 +14,22 @@ const Links = () => {
   return (
     <ul className="w-full text-center flex flex-col gap-4">
       <li>
-        <a
-          href="/"
-          className="font-bold uppercase text-xsm text-white-full tracking-[2px]">
+        <Link
+          to="/"
+          className="font-bold uppercase text-xsm text-white-full tracking-[2px]"
+          onClick={() => window.scrollTo(0, 0)}>
           Home
-        </a>
+        </Link>
       </li>
       {links &&
         links.map(({ title }, index) => (
           <li key={index}>
-            <a
-              href="/"
-              className="font-bold uppercase text-xsm text-white-full tracking-[2px]">
+            <Link
+              to={`/categories/${title}`}
+              className="font-bold uppercase text-xsm text-white-full tracking-[2px]"
+              onClick={() => window.scrollTo(0, 0)}>
               {title}
-            </a>
+            </Link>
           </li>
         ))}
     </ul>

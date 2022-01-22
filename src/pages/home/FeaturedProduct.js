@@ -1,7 +1,7 @@
 import React from 'react';
-import useFeaturedContent from '../../../utilities/hooks/useFeaturedContent';
-import featuredContent from '../../../api/endpoints/featuredContent';
-import ButtonOrange from '../../../components/buttons/ButtonOrange';
+import useFeaturedContent from '../../utilities/hooks/useFeaturedContent';
+import featuredContent from '../../api/endpoints/featuredContent';
+import ButtonOrange from '../../components/buttons/ButtonOrange';
 
 const FeaturedProduct = () => {
   const [featuredImage, productDetails] = useFeaturedContent(featuredContent);
