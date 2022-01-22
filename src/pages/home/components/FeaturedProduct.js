@@ -1,31 +1,37 @@
 import React from 'react';
-import featuredImageMobile from '../../../utilities/images/mobile/image-header.jpg';
+import useFeaturedContent from '../../../utilities/hooks/useFeaturedContent';
+import featuredContent from '../../../api/endpoints/featuredContent';
 import ButtonOrange from '../../../components/buttons/ButtonOrange';
 
 const FeaturedProduct = () => {
+  const [featuredImage, productDetails] = useFeaturedContent(featuredContent);
+
+  const { mobile } = featuredImage;
+
+  const { title, description } = productDetails;
+
   return (
-    <article className="relative p-app flex h-[510px]">
+    <article className="flex h-[510px]">
       <div className="w-full absolute -top-[90px] left-0">
         <img
           className="object-cover w-full h-[600px]"
-          src={featuredImageMobile}
+          src={mobile}
           alt="featured-mobile"
         />
       </div>
 
       <section className="relative z-10 margin-auto flex flex-col items-center justify-center gap-6">
-        <p className="uppercase text-white-full text-[14px] tracking-[10px]">
-          New Product
-        </p>
+        <div>
+          <p className="uppercase text-white-full text-[14px] tracking-[10px]">
+            New Product
+          </p>
+        </div>
 
         <h1 className="text-center text-white-full text-[36px] leading-[40px] tracking-[1.29px]">
-          XX99 MARK II HEADPHONES
+          {title}
         </h1>
 
-        <p className="text-white-full text-center">
-          Experience natural, lifelike audio and exceptional build quality made for the
-          passionate music enthusiast.
-        </p>
+        <p className="text-white-full text-center">{description}</p>
 
         <ButtonOrange />
       </section>

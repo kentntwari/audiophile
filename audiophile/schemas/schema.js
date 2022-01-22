@@ -12,6 +12,7 @@ import feature from './feature';
 import gallery from './gallery';
 import featuredContent from './featuredContent';
 import additional from './additional';
+import motto from './motto';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -29,6 +30,7 @@ export default createSchema({
     gallery,
     featuredContent,
     additional,
+    motto,
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas

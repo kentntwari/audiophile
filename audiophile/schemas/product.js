@@ -33,7 +33,7 @@ export default {
       type: 'number',
     },
     {
-      name: 'image',
+      name: 'product_image',
       title: 'Product images',
       type: 'object',
       fields: [
@@ -50,25 +50,25 @@ export default {
       },
     },
     {
-      name: 'description',
+      name: 'product_description',
       title: 'description',
       description: 'add short product trailer',
       type: 'blockContent',
     },
     {
-      name: 'features',
+      name: 'product_features',
       title: 'Features',
       description: "describe product's features",
       type: 'feature',
     },
     {
-      name: 'bonus',
+      name: 'in_the_box',
       title: 'In the box',
       description: 'add bonus items',
       type: 'bonus',
     },
     {
-      name: 'gallery',
+      name: 'product_gallery',
       title: 'Gallery',
       description: 'add images of product in action',
       type: 'gallery',

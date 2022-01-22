@@ -19,50 +19,8 @@ export default {
     },
     {
       name: 'image',
-      title: 'Category Image',
-      type: 'object',
-      fields: [
-        {
-          name: 'mobile',
-          title: 'On mobile',
-          type: 'image',
-          fields: [
-            {
-              name: 'alt',
-              title: 'Alt text',
-              type: 'string',
-            },
-          ],
-        },
-        {
-          name: 'tablet',
-          title: 'On tablet',
-          type: 'image',
-          fields: [
-            {
-              name: 'alt',
-              title: 'Alt text',
-              type: 'string',
-            },
-          ],
-        },
-        {
-          name: 'desktop',
-          title: 'On desktop',
-          type: 'image',
-          fields: [
-            {
-              name: 'alt',
-              title: 'Alt text',
-              type: 'string',
-            },
-          ],
-        },
-      ],
-
-      options: {
-        columns: 3,
-      },
+      title: 'Category image',
+      type: 'image',
     },
   ],
 };
