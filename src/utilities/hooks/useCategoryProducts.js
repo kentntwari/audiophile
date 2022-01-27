@@ -6,9 +6,14 @@ const useCategoryProducts = (param) => {
   const [categoryProducts, setCategoryProducts] = useState([]);
 
   useEffect(() => {
-    return sanityClient.fetch(category).then((results) => {
-      setCategoryProducts(() => results.filter((res) => res.category === param));
-    });
+    let isFetched = true;
+
+    if (isFetched)
+      return sanityClient.fetch(category).then((results) => {
+        setCategoryProducts(() => results.filter((res) => res.category === param));
+      });
+
+    return () => (isFetched = false);
   }, [param]);
 
   return categoryProducts;

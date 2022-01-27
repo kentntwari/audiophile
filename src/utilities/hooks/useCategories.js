@@ -5,7 +5,11 @@ const useCategories = (endpoint) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    return sanityClient.fetch(endpoint).then((res) => setCategories(res));
+    let isFetched = true;
+
+    if (isFetched) return sanityClient.fetch(endpoint).then((res) => setCategories(res));
+
+    return () => (isFetched = false);
   }, [endpoint]);
 
   return categories;

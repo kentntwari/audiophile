@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useFeaturedContent from '../../utilities/hooks/useFeaturedContent';
 import featuredContent from '../../api/endpoints/featuredContent';
 import ButtonOrange from '../../components/buttons/ButtonOrange';
@@ -8,7 +9,7 @@ const FeaturedProduct = () => {
 
   const { mobile } = featuredImage;
 
-  const { title, description } = productDetails;
+  const { title, description, slug, category } = productDetails;
 
   return (
     <article className="flex h-[510px]">
@@ -33,7 +34,9 @@ const FeaturedProduct = () => {
 
         <p className="text-white-full text-center">{description}</p>
 
-        <ButtonOrange />
+        <Link state={{ slug, category }} to={`/products/${slug}`}>
+          <ButtonOrange />
+        </Link>
       </section>
     </article>
   );

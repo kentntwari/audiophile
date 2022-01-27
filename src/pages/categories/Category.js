@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import useCategoryProducts from '../../utilities/hooks/useCategoryProducts';
 import ButtonOrange from '../../components/buttons/ButtonOrange';
 
@@ -12,7 +12,10 @@ const Category = () => {
     <Fragment>
       {products.length > 0 &&
         products.map(
-          ({ description, image_mobile, _image_tablet, image_desktop, title }, index) => (
+          (
+            { description, slug, image_mobile, _image_tablet, image_desktop, title },
+            index
+          ) => (
             <article key={index} className="flex flex-col items-center gap-8">
               <section>
                 <img src={image_mobile} alt={title} />
@@ -24,7 +27,13 @@ const Category = () => {
                   {title}
                 </h2>
                 <p className="text-center opacity-50">{description}</p>
-                <ButtonOrange />
+
+                <Link
+                  to={`/products/${slug}`}
+                  state={{ slug, category }}
+                  onClick={() => window.scrollTo(0, 0)}>
+                  <ButtonOrange />
+                </Link>
               </section>
             </article>
           )

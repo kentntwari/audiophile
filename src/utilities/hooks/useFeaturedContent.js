@@ -14,24 +14,43 @@ const useFeaturedContent = (endpoint) => {
   }));
 
   useEffect(() => {
-    return sanityClient
-      .fetch(endpoint)
-      .then(
-        ({ image_desktop, image_mobile, image_tablet, product, product_description }) => {
-          setFeaturedImage((prev) => {
-            return {
-              ...prev,
-              mobile: image_mobile,
-              tablet: image_tablet,
-              desktop: image_desktop,
-            };
-          });
+    let isFetched = true;
 
-          setProductDetails((prev) => {
-            return { ...prev, title: product, description: product_description };
-          });
-        }
-      );
+    if (isFetched)
+      return sanityClient
+        .fetch(endpoint)
+        .then(
+          ({
+            image_desktop,
+            image_mobile,
+            image_tablet,
+            product,
+            product_description,
+            slug,
+            category,
+          }) => {
+            setFeaturedImage((prev) => {
+              return {
+                ...prev,
+                mobile: image_mobile,
+                tablet: image_tablet,
+                desktop: image_desktop,
+              };
+            });
+
+            setProductDetails((prev) => {
+              return {
+                ...prev,
+                title: product,
+                description: product_description,
+                slug,
+                category,
+              };
+            });
+          }
+        );
+
+    return () => (isFetched = false);
   }, [endpoint]);
 
   return [featuredImage, productDetails];
