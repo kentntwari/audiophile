@@ -45,6 +45,7 @@ export function getMoreProducts(product) {
         "desktop":product_image.desktop.asset->url,
       },
       title,
-      "slug":slug.current
+      "slug":slug.current,
+      "category":category->title
     }`;
 }

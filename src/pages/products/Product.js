@@ -1,5 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { itemAdded } from '../../global/features/cart/addItemSlice';
+import { increment, decrement } from '../../global/features/cart/quantitySlice';
 import useProductData from '../../utilities/hooks/useProductData';
 import ButtonOrange from '../../components/buttons/ButtonOrange';
 
@@ -10,6 +14,12 @@ const Product = () => {
     location.state.slug,
     location.state.category
   );
+
+  const quantityRef = useRef();
+
+  const quantity = useSelector((state) => state.quantity.value);
+
+  const dispatch = useDispatch();
 
   return (
     <article className="flex flex-col justify-start items-start gap-22">
@@ -24,7 +34,7 @@ const Product = () => {
         {newProduct === true && <div className="type-overline">new product</div>}
 
         {basicData &&
-          basicData.map(({ title, description, price }, index) => (
+          basicData.map(({ image_mobile, title, description, price }, index) => (
             <Fragment key={index}>
               <section>
                 <h2 className="text-[1.75rem] leading-normal tracking-[1px]">{title}</h2>
@@ -35,11 +45,30 @@ const Product = () => {
 
               <section className="flex justify-start items-start gap-4">
                 <div className="bg-white-dimmed w-30 h-12 flex justify-center items-center gap-[31px]">
-                  <span className="font-bold opacity-50">-</span>
-                  <span className="font-bold">1</span>
-                  <span className="font-bold opacity-50">+</span>
+                  <span
+                    className="font-bold opacity-50"
+                    onClick={() => {
+                      if (quantityRef.current.innerText === '1') return 1;
+
+                      return dispatch(decrement());
+                    }}>
+                    -
+                  </span>
+                  <span ref={quantityRef} className="font-bold">
+                    {quantity}
+                  </span>
+                  <span
+                    className="font-bold opacity-50"
+                    onClick={() => dispatch(increment())}>
+                    +
+                  </span>
                 </div>
-                <ButtonOrange>Add to cart</ButtonOrange>
+                <ButtonOrange
+                  addToCart={() =>
+                    dispatch(itemAdded(image_mobile, title, price, quantity))
+                  }>
+                  Add to cart
+                </ButtonOrange>
               </section>
             </Fragment>
           ))}
@@ -96,7 +125,7 @@ const Product = () => {
 
         <div className="grid grid-cols-1 place-items-start gap-14">
           {prompts &&
-            prompts.map(({ product_images: images, title: product, slug }) => (
+            prompts.map(({ product_images: images, title: product, slug, category }) => (
               <article
                 key={slug}
                 className="flex flex-col justify-center items-center gap-8">
@@ -106,7 +135,10 @@ const Product = () => {
                 <h2 className="text-center text-[1.75rem] leading-normal tracking-[1px]">
                   {product}
                 </h2>
-                <ButtonOrange />
+
+                <Link to={`/products/${slug}`} state={{ slug, category }}>
+                  <ButtonOrange />
+                </Link>
               </article>
             ))}
         </div>

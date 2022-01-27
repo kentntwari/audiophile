@@ -20,6 +20,7 @@ function App() {
             <Route path="categories" element={<Categories />}>
               <Route path=":category" element={<Category />} />
             </Route>
+
             <Route path="products" element={<Products />}>
               <Route path=":product" element={<Product />} />
             </Route>
