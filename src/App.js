@@ -8,6 +8,8 @@ import Categories from './pages/categories';
 import Category from './pages/categories/Category';
 import Products from './pages/products';
 import Product from './pages/products/Product';
+import Checkout from './pages/checkout';
+import Cart from './components/products/Cart';
 
 function App() {
   return (
@@ -15,15 +17,17 @@ function App() {
       <Router>
         <Menu />
         <div className="relative px-app App">
+          <Cart />
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="categories" element={<Categories />}>
               <Route path=":category" element={<Category />} />
             </Route>
-
             <Route path="products" element={<Products />}>
               <Route path=":product" element={<Product />} />
             </Route>
+            <Route path="checkout" element={<Checkout />} />
           </Routes>
           <Motto />
         </div>
