@@ -12,7 +12,14 @@ const Menu = () => {
       <nav className="relative z-10 bg-[#191919] w-full px-app py-9 flex justify-between items-center">
         <i className="fas fa-bars text-white-full"></i>
         <img src={logo} alt="logo-audiophile-mobile" />
-        <img src={cart} alt="cart" onClick={() => dispatch(displayCart())} />
+        <img
+          src={cart}
+          alt="cart"
+          onClick={() => {
+            dispatch(displayCart());
+            document.body.classList.toggle('overflow-hidden');
+          }}
+        />
       </nav>
     </header>
   );
