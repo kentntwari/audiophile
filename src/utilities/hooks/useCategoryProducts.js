@@ -1,20 +1,25 @@
 import { useState, useEffect } from 'react';
 import sanityClient from '../../client';
-import category from '../../api/endpoints/category';
 
 const useCategoryProducts = (param) => {
+  const [api, setApi] = useState(null);
   const [categoryProducts, setCategoryProducts] = useState([]);
 
   useEffect(() => {
     let isFetched = true;
 
-    if (isFetched)
-      return sanityClient.fetch(category).then((results) => {
-        setCategoryProducts(() => results.filter((res) => res.category === param));
-      });
+    import('../../api/endpoints/category').then((module) => setApi(module.default));
+
+    sanityClient
+      .fetch(api)
+      .then(
+        (results) =>
+          isFetched &&
+          setCategoryProducts(() => results.filter((res) => res.category === param))
+      );
 
     return () => (isFetched = false);
-  }, [param]);
+  }, [api, param]);
 
   return categoryProducts;
 };
