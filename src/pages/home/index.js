@@ -1,9 +1,10 @@
-import React from 'react';
-import FeaturedProduct from './FeaturedProduct';
-import Categories from '../../components/products/Categories';
-import UpgradeCTA from './UpgradeCTA';
-import BuyProductOne from './BuyProductOne';
-import BuyProductTwo from './BuyProductTwo';
+import React, { lazy, Suspense } from 'react';
+
+const FeaturedProduct = lazy(() => import('./FeaturedProduct'));
+const Categories = lazy(() => import('../../components/products/Categories'));
+const UpgradeCTA = lazy(() => import('./UpgradeCTA'));
+const BuyProductOne = lazy(() => import('./BuyProductOne'));
+const BuyProductTwo = lazy(() => import('./BuyProductTwo'));
 
 const Home = () => {
   return (
@@ -11,9 +12,11 @@ const Home = () => {
       <FeaturedProduct />
       <Categories />
       <section className="flex flex-col gap-6">
-        <UpgradeCTA />
-        <BuyProductOne />
-        <BuyProductTwo />
+        <Suspense fallback={<div className="w-full h-3/6">Loading...</div>}>
+          <UpgradeCTA />
+          <BuyProductOne />
+          <BuyProductTwo />
+        </Suspense>
       </section>
     </main>
   );
