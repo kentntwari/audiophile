@@ -1,10 +1,20 @@
-import React, { Fragment, useRef } from 'react';
-import ButtonOrange from '../../components/buttons/ButtonOrange';
+import React, { Fragment, useRef, useEffect, createRef } from 'react';
+import { useLocation } from 'react-router-dom';
+import AddToCart from '../../components/buttons/AddToCart';
+import Cart from '../../components/products/Cart';
 
-const ProductInfo = ({ info, dispatchToStore, storeActions, quantity }) => {
+const ProductInfo = ({ info, dispatchToStore, storeActions }) => {
   const quantityRef = useRef();
+  const buttonRef = createRef();
 
-  const { data, increaseQuantity, decreaseQuantity } = storeActions;
+  const { data } = storeActions;
+
+  const location = useLocation();
+
+  useEffect(() => {
+    quantityRef.current.innerText = '1';
+    buttonRef.current.innerText = 'add to cart';
+  }, [location.state.slug, buttonRef]);
 
   return (
     <Fragment>
@@ -22,30 +32,39 @@ const ProductInfo = ({ info, dispatchToStore, storeActions, quantity }) => {
               <span
                 className="font-bold opacity-50"
                 onClick={() => {
+                  buttonRef.current.innerText = 'add to cart';
                   if (quantityRef.current.innerText === '1') return 1;
 
-                  return dispatchToStore(decreaseQuantity);
+                  quantityRef.current.innerText =
+                    parseInt(quantityRef.current.innerText) - 1;
                 }}>
                 -
               </span>
-              <span ref={quantityRef} className="font-bold">
-                {quantity}
-              </span>
+              <span ref={quantityRef} className="font-bold"></span>
               <span
                 className="font-bold opacity-50"
-                onClick={() => dispatchToStore(increaseQuantity)}>
+                onClick={() => {
+                  buttonRef.current.innerText = 'add to cart';
+
+                  quantityRef.current.innerText =
+                    parseInt(quantityRef.current.innerText) + 1;
+                }}>
                 +
               </span>
             </div>
-            <ButtonOrange
-              addToCart={() =>
-                dispatchToStore(data(image_mobile, title, price, quantity))
-              }>
-              Add to cart
-            </ButtonOrange>
+            <AddToCart
+              addToCart={() => {
+                const quantity = parseInt(quantityRef.current.innerText);
+                buttonRef.current.innerText = 'added to cart';
+                dispatchToStore(data(image_mobile, title, price, quantity));
+              }}
+              ref={buttonRef}
+            />
           </section>
         </Fragment>
       ))}
+
+      <Cart />
     </Fragment>
   );
 };

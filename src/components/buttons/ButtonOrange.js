@@ -9,13 +9,13 @@ const ButtonOrange = ({ children = 'see product', addClass, removeClass, addToCa
 
   return (
     <button
-      ref={button_orange}
-      className="bg-orange-full hover:bg-orange-dimmed w-40 h-12 flex justify-center items-center font-bold text-xsm
-      text-white-full uppercase tracking-style-button"
-      onClick={addToCart}>
+      className="bg-orange-full hover:bg-orange-dimmed w-40
+         h-12 flex justify-center items-center font-bold text-xsm 
+         text-white-full uppercase tracking-style-button"
+      onClick={addToCart}
+      ref={button_orange}>
       {children}
     </button>
   );
 };
-
 export default ButtonOrange;

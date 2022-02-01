@@ -1,15 +1,16 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Menu from './components/menu';
 import Footer from './components/footer';
-import Home from './pages/home';
-import Motto from './components/Motto';
-import Categories from './pages/categories';
-import Category from './pages/categories/Category';
-import Products from './pages/products';
-import Product from './pages/products/Product';
-import Checkout from './pages/checkout';
-import Cart from './components/products/Cart';
+
+const Home = lazy(() => import('./pages/home'));
+const Categories = lazy(() => import('./pages/categories'));
+const Category = lazy(() => import('./pages/categories/Category'));
+const Products = lazy(() => import('./pages/products'));
+const Product = lazy(() => import('./pages/products/Product'));
+const Checkout = lazy(() => import('./pages/checkout'));
+const Cart = lazy(() => import('./components/products/Cart'));
+const Motto = lazy(() => import('./components/Motto'));
 
 function App() {
   return (
@@ -17,19 +18,20 @@ function App() {
       <Router>
         <Menu />
         <div className="relative px-app App">
-          <Cart />
-
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="categories" element={<Categories />}>
-              <Route path=":category" element={<Category />} />
-            </Route>
-            <Route path="products" element={<Products />}>
-              <Route path=":product" element={<Product />} />
-            </Route>
-            <Route path="checkout" element={<Checkout />} />
-          </Routes>
-          <Motto />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Cart />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="categories" element={<Categories />}>
+                <Route path=":category" element={<Category />} />
+              </Route>
+              <Route path="products" element={<Products />}>
+                <Route path=":product" element={<Product />} />
+              </Route>
+              <Route path="checkout" element={<Checkout />} />
+            </Routes>
+            <Motto />
+          </Suspense>
         </div>
         <Footer />
       </Router>

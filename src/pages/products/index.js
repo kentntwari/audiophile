@@ -4,7 +4,6 @@ import Categories from '../../components/products/Categories';
 
 const Products = () => {
   const { product } = useParams();
-
   let navigate = useNavigate();
 
   return (
@@ -14,6 +13,7 @@ const Products = () => {
           <p className="opacity-50" onClick={() => navigate(-1)}>
             Go Back
           </p>
+
           <Outlet />
         </section>
       )}

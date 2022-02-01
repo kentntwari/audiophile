@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import addItemReducer from './features/cart/addItemSlice';
-import quantityReducer from './features/cart/quantitySlice';
+import cartReducer from './features/cart/cartSlice';
+import showCartReducer from './features/cart/showCartSlice';
 
 export default configureStore({
   reducer: {
-    addItem: addItemReducer,
-    quantity: quantityReducer,
+    cart: cartReducer,
+    displayCart: showCartReducer,
   },
 });
