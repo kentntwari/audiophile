@@ -9,10 +9,21 @@ const BuyProductTwo = lazy(() => import('./BuyProductTwo'));
 const Home = () => {
   return (
     <main className="w-full flex flex-col gap-22">
-      <FeaturedProduct />
-      <Categories />
-      <section className="flex flex-col gap-6">
-        <Suspense fallback={<div className="w-full h-3/6">Loading...</div>}>
+      <Suspense
+        fallback={
+          <div className="w-full h-3/6 flex justify-center items-center">Loading...</div>
+        }>
+        <FeaturedProduct />
+        <Categories />
+      </Suspense>
+
+      <section className="w-full flex flex-col gap-6">
+        <Suspense
+          fallback={
+            <div className="w-full h-3/6 flex justify-center items-center">
+              Loading...
+            </div>
+          }>
           <UpgradeCTA />
           <BuyProductOne />
           <BuyProductTwo />
