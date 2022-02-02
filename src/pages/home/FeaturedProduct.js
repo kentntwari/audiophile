@@ -1,14 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useFeaturedContent from '../../utilities/hooks/useFeaturedContent';
-import featuredContent from '../../api/endpoints/featuredContent';
 import ButtonOrange from '../../components/buttons/ButtonOrange';
 
 const FeaturedProduct = () => {
-  const [featuredImage, productDetails] = useFeaturedContent(featuredContent);
-
+  const [featuredImage, productDetails] = useFeaturedContent();
   const { mobile } = featuredImage;
-
   const { title, description, slug, category } = productDetails;
 
   return (
