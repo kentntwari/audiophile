@@ -1,36 +1,31 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useCallback } from 'react';
 import useCategories from '../../utilities/hooks/useCategories';
-import ShopButton from '../buttons/ShopButton';
+import ListCategory from './ListCategory';
 
 const Categories = () => {
-  const [...results] = useCategories();
+  const results = useCategories();
+
+  const displayCategories = useCallback(
+    () =>
+      results !== null &&
+      results.map((item, index) => {
+        const { category, category_image, slug } = item;
+
+        return (
+          <ListCategory
+            key={index}
+            name={category}
+            thumbnail={category_image}
+            slug={slug}
+          />
+        );
+      }),
+    [results]
+  );
 
   return (
     <section className="grid grid-cols-1 gap-17">
-      {console.log('it re-rendered')}
-      {results.map(({ category, category_image, slug }, index) => {
-        return (
-          <Link
-            key={index}
-            to={`/categories/${category}`}
-            onClick={() => window.scrollTo(0, 0)}>
-            <article className="relative pt-[5.5rem] pb-4 rounded-md bg-white-dimmed flex flex-col items-center gap-[17px]">
-              <figure>
-                <img
-                  className="w-1/2 absolute top-[10%] left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                  src={category_image}
-                  alt={slug}
-                />
-                <figcaption className="font-bold uppercase text-[0.938rem] tracking-[1.07px]">
-                  {category}
-                </figcaption>
-              </figure>
-              <ShopButton />
-            </article>
-          </Link>
-        );
-      })}
+      {displayCategories()}
     </section>
   );
 };
