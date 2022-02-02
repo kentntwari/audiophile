@@ -3,19 +3,20 @@ import sanityClient from '../../client';
 
 const useCategories = () => {
   const [categories, setCategories] = useState([]);
-  const [api, setApi] = useState(null);
+  const [apiEndpoint, setApiEndpoint] = useState(null);
 
   useEffect(() => {
-    import('../../api/endpoints/categories').then((module) => setApi(module.default));
+    import('../../api/endpoints/categories').then((module) =>
+      setApiEndpoint(module.default)
+    );
   }, []);
 
   useEffect(() => {
     let isFetched = true;
-
-    sanityClient.fetch(api).then((res) => isFetched && setCategories(res));
+    sanityClient.fetch(apiEndpoint).then((res) => isFetched && setCategories(res));
 
     return () => (isFetched = false);
-  }, [api]);
+  }, [apiEndpoint]);
 
   return categories;
 };
