@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import yx1Earphones from '../../utilities/images/mobile/image-earphones-yx1.jpg';
 import ButtonWhite from '../../components/buttons/ButtonWhite';
 
 const BuyProductTwo = () => {
+  const [productImage, setProductImage] = useState(null);
+
+  useEffect(() => {
+    import('../../utilities/images/mobile/image-earphones-yx1.jpg').then((module) =>
+      setProductImage(module.default)
+    );
+  }, []);
+
   return (
     <article className="grid grid-cols-1 gap-6">
       <figure>
-        <img className="rounded-md" src={yx1Earphones} alt="yx1-earphones" />
+        <img className="rounded-md" src={productImage} alt="yx1-earphones" />
       </figure>
 
       <section className="px-6 py-[2.563rem] rounded-md bg-white-dimmed flex flex-col gap-8">
