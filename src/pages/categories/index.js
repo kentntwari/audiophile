@@ -1,7 +1,6 @@
 import React from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import ListOfCategories from '../../components/products/Categories';
-import categories from '../../api/endpoints/categories';
 import useCategories from '../../utilities/hooks/useCategories';
 
 const Categories = () => {
@@ -9,8 +8,7 @@ const Categories = () => {
 
   const { category } = useParams();
 
-  const [...results] = useCategories(categories);
-
+  const [...results] = useCategories();
   found = results.some((res) => res.category === category);
 
   return (

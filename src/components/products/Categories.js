@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useCategories from '../../utilities/hooks/useCategories';
-import categories from '../../api/endpoints/categories';
 import ShopButton from '../buttons/ShopButton';
 
 const Categories = () => {
-  const [...results] = useCategories(categories);
+  const [...results] = useCategories();
 
   return (
     <section className="grid grid-cols-1 gap-17">
+      {console.log('it re-rendered')}
       {results.map(({ category, category_image, slug }, index) => {
         return (
           <Link
