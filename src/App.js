@@ -18,7 +18,12 @@ function App() {
       <Router>
         <Menu />
         <div className="relative px-app App">
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense
+            fallback={
+              <div className="w-full h-3/2 flex justify-center items-center">
+                Loading...
+              </div>
+            }>
             <Cart />
             <Routes>
               <Route path="/" element={<Home />} />
