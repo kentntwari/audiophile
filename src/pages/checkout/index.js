@@ -1,10 +1,13 @@
 import React, { Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import Form from './Form';
 import Summary from './Summary';
 
 const Checkout = () => {
   let navigate = useNavigate();
+  const cart = useSelector((state) => state.cart);
 
   return (
     <Fragment>
@@ -16,7 +19,7 @@ const Checkout = () => {
 
       <main className="mt-6 flex flex-col gap-8">
         <Form />
-        <Summary />
+        {cart.length > 0 && <Summary />}
       </main>
     </Fragment>
   );
