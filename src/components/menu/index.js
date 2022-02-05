@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+
 import { displayCart } from '../../global/features/cart/showCartSlice';
 import logo from '../../utilities/images/mobile/logo.svg';
 import cart from '../../utilities/images/mobile/icon-cart.svg';
@@ -17,7 +18,7 @@ const Menu = () => {
           alt="cart"
           onClick={() => {
             dispatch(displayCart());
-            document.body.classList.toggle('overflow-hidden');
+            return document.body.classList.toggle('overflow-hidden');
           }}
         />
       </nav>
