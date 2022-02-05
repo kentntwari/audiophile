@@ -40,10 +40,12 @@ const cartSlice = createSlice({
       },
     },
 
- 
+    emptyCart: (state) => {
+      if (state.length > 0) return (state = []);
+    },
   },
 });
 
-export const { addedToCart, updateCart } = cartSlice.actions;
+export const { addedToCart, updateCart, emptyCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
