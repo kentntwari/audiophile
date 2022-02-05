@@ -13,7 +13,6 @@ const Products = () => {
           <p className="opacity-50" onClick={() => navigate(-1)}>
             Go Back
           </p>
-
           <Outlet />
         </section>
       )}
