@@ -1,5 +1,6 @@
 import React, { Fragment, lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
+
 import Menu from './components/menu';
 import Footer from './components/footer';
 
@@ -13,33 +14,33 @@ const Cart = lazy(() => import('./components/products/Cart'));
 const Motto = lazy(() => import('./components/Motto'));
 
 function App() {
+  const location = useLocation();
+
   return (
     <Fragment>
-      <Router>
-        <Menu />
-        <div className="relative px-app App">
-          <Suspense
-            fallback={
-              <div className="w-full h-3/2 flex justify-center items-center">
-                Loading...
-              </div>
-            }>
-            <Cart />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="categories" element={<Categories />}>
-                <Route path=":category" element={<Category />} />
-              </Route>
-              <Route path="products" element={<Products />}>
-                <Route path=":product" element={<Product />} />
-              </Route>
-              <Route path="checkout" element={<Checkout />} />
-            </Routes>
-            <Motto />
-          </Suspense>
-        </div>
-        <Footer />
-      </Router>
+      <Menu />
+      <div className="relative px-app App">
+        <Suspense
+          fallback={
+            <div className="w-full h-3/2 flex justify-center items-center">
+              Loading...
+            </div>
+          }>
+          <Cart />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="categories" element={<Categories />}>
+              <Route path=":category" element={<Category />} />
+            </Route>
+            <Route path="products" element={<Products />}>
+              <Route path=":product" element={<Product />} />
+            </Route>
+            <Route path="checkout" element={<Checkout />} />
+          </Routes>
+          {location.pathname !== '/checkout' && <Motto />}
+        </Suspense>
+      </div>
+      <Footer />
     </Fragment>
   );
 }
