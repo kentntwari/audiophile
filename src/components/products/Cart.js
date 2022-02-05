@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
+import { emptyCart } from '../../global/features/cart/cartSlice';
 import { displayCart } from '../../global/features/cart/showCartSlice';
 import CartItem from './CartItem';
 import ButtonOrange from '../buttons/ButtonOrange';
@@ -35,6 +36,9 @@ const Cart = () => {
           />
         ))
       );
+
+    if (cart.length === 0)
+      return setCartItems(() => <p className="opacity-50">No items in cart</p>);
   }, [cart, cart.length]);
 
   useEffect(() => {
@@ -63,7 +67,9 @@ const Cart = () => {
           <h6>
             cart <span>({cart.length})</span>
           </h6>
-          <p className="underline opacity-50">Remove all</p>
+          <p className="underline opacity-50" onClick={() => dispatch(emptyCart())}>
+            Remove all
+          </p>
         </section>
 
         <section className="w-full flex flex-col justify-start gap-6">
