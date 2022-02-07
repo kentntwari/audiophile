@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, createRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+
 import CartItem from './CartItem';
 import Total from './Total';
 import Shipping from './Shipping';
