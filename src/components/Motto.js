@@ -52,14 +52,18 @@ const Motto = () => {
           });
 
           return (
-            <h2 className="text-center text-[1.75rem] leading-normal tracking-[1px]">
+            <h2
+              className="text-center 2xl:text-left text-[1.75rem]
+             2xl:text-h2 leading-normal tracking-[1px]">
               {res}
             </h2>
           );
         });
 
         setMottoDescription(() => (
-          <p className="text-center opacity-50">{description}</p>
+          <p className="mt-4 2xl:mt-8 text-center 2xl:text-left opacity-50">
+            {description}
+          </p>
         ));
 
         setPreviews((prev) => {
@@ -75,14 +79,35 @@ const Motto = () => {
   }, []);
 
   return (
-    <div className="mt-30 flex flex-col justify-center gap-8">
-      {previews.mobile !== null && (
+    <div
+      className="mt-30 flex flex-col 2xl:w-[1110px] 2xl:mx-auto
+       2xl:flex-row-reverse justify-center 2xl:items-center gap-8 2xl:gap-40">
+      {previews.mobile && (
         <figure>
-          <img className="rounded-md" src={previews.mobile} alt="motto-on-mobile" />
+          <img
+            className="rounded-md lg:hidden"
+            src={previews.mobile}
+            alt="motto-on-mobile"
+          />
+
+          <img
+            className="hidden lg:block 2xl:hidden rounded-md"
+            src={previews.tablet}
+            alt="motto-on-tablet"
+          />
+
+          <img
+            className="hidden 2xl:block rounded-md"
+            src={previews.desktop}
+            alt="motto-on-desktop"
+          />
         </figure>
       )}
-      {mottoTitle}
-      {mottoDescription}
+
+      <div className="lg:w-[35.8rem] lg:mx-auto">
+        {mottoTitle}
+        {mottoDescription}
+      </div>
     </div>
   );
 };
