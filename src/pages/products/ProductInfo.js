@@ -1,5 +1,7 @@
 import React, { Fragment, useRef, useEffect, createRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
+
 import AddToCart from '../../components/buttons/AddToCart';
 import Cart from '../../components/products/Cart';
 
@@ -18,9 +20,9 @@ const ProductInfo = ({ info, dispatchToStore, storeActions }) => {
 
   return (
     <Fragment>
-      {info.map(({ image_mobile, title, description, price }, index) => (
-        <Fragment key={index}>
-          <section>
+      {info.map(({ image_mobile, title, description, price }) => (
+        <div key={uuidv4()} className="flex flex-col gap-6 xl:gap-4">
+          <section className="flex flex-col gap-6 xl:gap-4">
             <h2 className="text-[1.75rem] leading-normal tracking-[1px]">{title}</h2>
             <p className="opacity-50">{description}</p>
           </section>
@@ -61,7 +63,7 @@ const ProductInfo = ({ info, dispatchToStore, storeActions }) => {
               ref={buttonRef}
             />
           </section>
-        </Fragment>
+        </div>
       ))}
 
       <Cart />

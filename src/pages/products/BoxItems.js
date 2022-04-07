@@ -2,7 +2,7 @@ import React from 'react';
 
 const BoxItems = ({ data }) => {
   return (
-    <div className="flex flex-col justify-start items-start gap-6">
+    <div className="flex flex-col lg:flex-row xl:flex-col justify-start items-start gap-6 lg:gap-[9.9rem] xl:gap-6">
       <h2 className="text-[1.75rem] leading-normal tracking-[1px]">in the box</h2>
       <div className="flex flex-col gap-[8px]">
         {data === null ? (

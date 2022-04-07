@@ -3,18 +3,44 @@ import { Link } from 'react-router-dom';
 import ButtonWhite from '../../components/buttons/ButtonWhite';
 
 const BuyProductOne = () => {
-  const [productImage, setProductImage] = useState(null);
+  const [productImageMobile, setProductImageMobile] = useState(null);
+  const [productImageTablet, setProductImageTablet] = useState(null);
+  const [productImageDesktop, setProductImageDesktop] = useState(null);
 
   useEffect(() => {
     import('../../utilities/images/mobile/image-speaker-zx7.jpg').then((module) =>
-      setProductImage(module.default)
+      setProductImageMobile(module.default)
+    );
+
+    import('../../utilities/images/tablet/image-speaker-zx7.jpg').then((module) =>
+      setProductImageTablet(module.default)
+    );
+
+    import('../../utilities/images/desktop/image-speaker-zx7.jpg').then((module) =>
+      setProductImageDesktop(module.default)
     );
   }, []);
 
   return (
-    <article className="grid grid-cols-1 grid-rows-1">
-      <figure className="col-start-1 row-start-1 row-span-1">
-        <img className="rounded-md" src={productImage} alt="zx7-speaker" />
+    <article className="2xl:w-[1110px] 2xl:mx-auto grid grid-cols-1 grid-rows-1">
+      <figure className="md:justify-self-end col-start-1 row-start-1 row-span-1">
+        <img
+          className="rounded-md md:hidden"
+          src={productImageMobile}
+          alt="zx7-speaker"
+        />
+
+        <img
+          className="hidden md:block xl:hidden rounded-md"
+          src={productImageTablet}
+          alt="zx7-speaker"
+        />
+
+        <img
+          className="hidden xl:block rounded-md"
+          src={productImageDesktop}
+          alt="zx7-speaker"
+        />
       </figure>
 
       <section className="pl-6 col-start-1 row-start-1 row-span-1">

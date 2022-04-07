@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -10,7 +10,7 @@ const Checkout = () => {
   const cart = useSelector((state) => state.cart);
 
   return (
-    <Fragment>
+    <div className="2xl:w-[1110px] 2xl:mx-auto">
       <section className="mt-5">
         <p className="opacity-50" onClick={() => navigate(-1)}>
           Go Back
@@ -21,7 +21,7 @@ const Checkout = () => {
         <Form />
         {cart.length > 0 && <Summary />}
       </main>
-    </Fragment>
+    </div>
   );
 };
 

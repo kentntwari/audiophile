@@ -8,8 +8,8 @@ const Products = () => {
 
   return (
     <main className="flex flex-col gap-43">
-      {product !== undefined && (
-        <section className="mt-5 flex flex-col gap-8">
+      {product && (
+        <section className="2xl:w-[1110px] 2xl:mx-auto mt-5 2xl:mt-[79px] flex flex-col gap-8">
           <p className="opacity-50" onClick={() => navigate(-1)}>
             Go Back
           </p>
@@ -17,7 +17,7 @@ const Products = () => {
         </section>
       )}
 
-      <div className={product === undefined ? 'mt-30' : undefined}>
+      <div className={`${!product ? 'mt-30' : 'lg:-mt-[9.25rem]'} 2xl:w-fit 2xl:mx-auto`}>
         <Categories />
       </div>
     </main>

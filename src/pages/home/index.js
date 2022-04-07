@@ -1,33 +1,22 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 
-const FeaturedProduct = lazy(() => import('./FeaturedProduct'));
-const Categories = lazy(() => import('../../components/products/Categories'));
-const UpgradeCTA = lazy(() => import('./UpgradeCTA'));
-const BuyProductOne = lazy(() => import('./BuyProductOne'));
-const BuyProductTwo = lazy(() => import('./BuyProductTwo'));
+import FeaturedProduct from './FeaturedProduct';
+import UpgradeCTA from './UpgradeCTA';
+import BuyProductOne from './BuyProductOne';
+import BuyProductTwo from './BuyProductTwo';
+
+import Categories from '../../components/products/Categories';
 
 const Home = () => {
   return (
     <main className="w-full flex flex-col gap-22">
-      <Suspense
-        fallback={
-          <div className="w-full h-3/6 flex justify-center items-center">Loading...</div>
-        }>
-        <FeaturedProduct />
-        <Categories />
-      </Suspense>
+      <FeaturedProduct />
+      <Categories applyClass="md:mt-24 lg:mt-60 2xl:mt-20 2xl:mx-auto" />
 
       <section className="w-full flex flex-col gap-6">
-        <Suspense
-          fallback={
-            <div className="w-full h-3/6 flex justify-center items-center">
-              Loading...
-            </div>
-          }>
-          <UpgradeCTA />
-          <BuyProductOne />
-          <BuyProductTwo />
-        </Suspense>
+        <UpgradeCTA />
+        <BuyProductOne />
+        <BuyProductTwo />
       </section>
     </main>
   );
