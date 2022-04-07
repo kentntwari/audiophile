@@ -2,12 +2,12 @@ import React, { memo, useCallback } from 'react';
 import useCategories from '../../utilities/hooks/useCategories';
 import ListCategory from './ListCategory';
 
-const Categories = () => {
+const Categories = ({ applyClass = 'lg:mt-[9.25rem]' }) => {
   const results = useCategories();
 
   const displayCategories = useCallback(
     () =>
-      results !== null &&
+      results &&
       results.map((item, index) => {
         const { category, category_image, slug } = item;
 
@@ -23,7 +23,12 @@ const Categories = () => {
     [results]
   );
 
-  return <section className="grid grid-cols-1 gap-17">{displayCategories()}</section>;
+  return (
+    <section
+      className={`2xl:w-[1110px] ${applyClass} grid grid-cols-1 lg:grid-cols-3 gap-17 lg:gap-[10px]`}>
+      {displayCategories()}
+    </section>
+  );
 };
 
 export default memo(Categories);

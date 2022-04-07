@@ -61,8 +61,8 @@ const Cart = () => {
       <dialog
         ref={cart_popUp}
         open
-        className="w-[20.43rem] rounded-md px-[28px] py-[33px] absolute top-[1.5rem]
-           left-0 opacity-100 z-50 flex flex-col justify-start items-start gap-8">
+        className="absolute w-[20.43rem] lg:w-[23.5rem] rounded-md px-[28px] py-[33px] top-[1.5rem]
+           left-0 lg:-right-[335px] opacity-100 z-50 flex flex-col justify-start items-start gap-8">
         <section className="w-full flex justify-between items-start">
           <h6>
             cart <span>({cart.length})</span>
