@@ -2,11 +2,11 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     screens: {
-      sm: { min: '375px', max: '640px' },
-      md: { min: '641px', max: '767px' },
-      lg: { min: '768px', max: '1024px' },
-      xl: { min: '1025px', max: '1280px' },
-      '2xl': { min: '1281px', max: '1440px' },
+      sm: '375px',
+      md: '640px',
+      lg: '768px',
+      xl: '1024px',
+      '2xl': '1280px',
     },
 
     fontFamily: {
@@ -21,6 +21,7 @@ module.exports = {
       black: {
         full: '#000000',
         plus: '#101010',
+        featured: '#191919',
       },
       white: {
         full: '#ffffff',

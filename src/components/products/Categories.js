@@ -25,7 +25,7 @@ const Categories = ({ applyClass = 'lg:mt-[9.25rem]' }) => {
 
   return (
     <section
-      className={`2xl:w-[1110px] ${applyClass} grid grid-cols-1 lg:grid-cols-3 gap-17 lg:gap-[10px]`}>
+      className={`2xl:w-[1110px] ${applyClass} sm:grid sm:grid-cols-1 lg:grid-cols-3 gap-17 lg:gap-[10px]`}>
       {displayCategories()}
     </section>
   );

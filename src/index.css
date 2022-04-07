@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.App {
+  @apply relative px-app xl:px-[10.313rem];
+}
+
 @layer base {
   h1 {
     @apply font-bold uppercase text-h1 text-black-full;

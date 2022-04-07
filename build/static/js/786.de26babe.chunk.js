@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkaudiophile=self.webpackChunkaudiophile||[]).push([[786],{7786:function(e,t,a){a.r(t);t.default='\n        *[_type ==\'category\'] | order(_createdAt){\n        "category":title,\n        "category_image":image.asset->url,\n        "slug":slug.current\n      }\n      '}}]);
-//# sourceMappingURL=786.de26babe.chunk.js.map
