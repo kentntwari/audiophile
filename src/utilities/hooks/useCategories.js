@@ -6,9 +6,13 @@ const useCategories = () => {
   const [apiEndpoint, setApiEndpoint] = useState(null);
 
   useEffect(() => {
-    import('../../api/endpoints/categories').then((module) =>
-      setApiEndpoint(module.default)
+    let isMounted = true;
+
+    import('../../api/endpoints/categories').then(
+      (module) => isMounted && setApiEndpoint(module.default)
     );
+
+    return () => (isMounted = false);
   }, []);
 
   useEffect(() => {

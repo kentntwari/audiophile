@@ -8,9 +8,13 @@ const useProductData = (productSlug, productCategory) => {
   const [generalInfo, setGeneralInfo] = useState(null);
 
   useEffect(() => {
-    import('../../api/endpoints/product').then((module) =>
-      setApiEndpoint_general_info(module.initialData)
+    let isMounted = true;
+
+    import('../../api/endpoints/product').then(
+      (module) => isMounted && setApiEndpoint_general_info(module.initialData)
     );
+
+    return () => (isMounted = false);
   }, []);
 
   useEffect(() => {
@@ -32,9 +36,14 @@ const useProductData = (productSlug, productCategory) => {
   const [isNewProduct, setIsNewProduct] = useState(false);
 
   useEffect(() => {
-    import('../../api/endpoints/product').then((module) =>
-      setApiEndpoint_new_product(module.sortByCategory(productCategory))
+    let isMounted = true;
+
+    import('../../api/endpoints/product').then(
+      (module) =>
+        isMounted && setApiEndpoint_new_product(module.sortByCategory(productCategory))
     );
+
+    return () => (isMounted = false);
   }, [productCategory]);
 
   useEffect(() => {
@@ -58,9 +67,14 @@ const useProductData = (productSlug, productCategory) => {
   const [boxItems, setBoxItems] = useState(null);
 
   useEffect(() => {
-    import('../../api/endpoints/product').then((module) =>
-      setApiEndpoint_box_items(module.getProductBoxItems(productSlug))
+    let isMounted = true;
+
+    import('../../api/endpoints/product').then(
+      (module) =>
+        isMounted && setApiEndpoint_box_items(module.getProductBoxItems(productSlug))
     );
+
+    return () => (isMounted = false);
   }, [productSlug]);
 
   useEffect(() => {
@@ -78,9 +92,14 @@ const useProductData = (productSlug, productCategory) => {
   const [productGallery, setProductGallery] = useState(null);
 
   useEffect(() => {
-    import('../../api/endpoints/product').then((module) =>
-      setApiEndpoint_product_gallery(module.getProductGallery(productSlug))
+    let isMounted = true;
+
+    import('../../api/endpoints/product').then(
+      (module) =>
+        isMounted && setApiEndpoint_product_gallery(module.getProductGallery(productSlug))
     );
+
+    return () => (isMounted = false);
   }, [productSlug]);
 
   useEffect(() => {
@@ -98,9 +117,13 @@ const useProductData = (productSlug, productCategory) => {
   const [prompts, setPrompts] = useState(null);
 
   useEffect(() => {
-    import('../../api/endpoints/product').then((module) =>
-      setApiEndpoint_prompts(module.getMoreProducts(productSlug))
+    let isMounted = true;
+
+    import('../../api/endpoints/product').then(
+      (module) => isMounted && setApiEndpoint_prompts(module.getMoreProducts(productSlug))
     );
+
+    return () => (isMounted = false);
   }, [productSlug]);
 
   useEffect(() => {

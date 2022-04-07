@@ -19,7 +19,8 @@ function App() {
   return (
     <Fragment>
       <Menu />
-      <div className="relative px-app App">
+
+      <div className="App overflow-x-hidden">
         <Suspense
           fallback={
             <div className="w-full h-3/2 flex justify-center items-center">
@@ -32,14 +33,18 @@ function App() {
             <Route path="categories" element={<Categories />}>
               <Route path=":category" element={<Category />} />
             </Route>
+
             <Route path="products" element={<Products />}>
               <Route path=":product" element={<Product />} />
             </Route>
+
             <Route path="checkout" element={<Checkout />} />
           </Routes>
+          
           {location.pathname !== '/checkout' && <Motto />}
         </Suspense>
       </div>
+
       <Footer />
     </Fragment>
   );

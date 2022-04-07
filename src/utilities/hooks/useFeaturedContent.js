@@ -5,9 +5,13 @@ const useFeaturedContent = () => {
   const [apiEndpoint, setApiEndpoint] = useState(null);
 
   useEffect(() => {
-    import('../../api/endpoints/featuredContent').then((module) =>
-      setApiEndpoint(module.default)
+    let isMounted = true;
+
+    import('../../api/endpoints/featuredContent').then(
+      (module) => isMounted && setApiEndpoint(module.default)
     );
+
+    return () => (isMounted = false);
   }, []);
 
   const [featuredImage, setFeaturedImage] = useState(() => ({
