@@ -12,7 +12,7 @@ const Links = () => {
   }, []);
 
   return (
-    <ul className="w-full text-center flex flex-col gap-4">
+    <ul className="w-full text-center flex flex-col lg:flex-row gap-4 lg:gap-[2.125rem]">
       <li>
         <Link
           to="/"
