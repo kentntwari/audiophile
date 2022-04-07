@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkaudiophile=self.webpackChunkaudiophile||[]).push([[533],{7533:function(e,t,i){i.r(t);t.default='\n*[_type ==\'product\'] | order(_createdAt desc){\n  title,\n  "description":product_description[0].children[0].text,\n  "image_mobile":product_image.mobile.asset ->url,\n  "image_tablet":product_image.tablet.asset ->url,\n  "image_desktop":product_image.desktop.asset ->url,\n  "category": category->title,\n  "slug":slug.current\n}\n'}}]);
+//# sourceMappingURL=533.ab6f2751.chunk.js.map
