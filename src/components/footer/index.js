@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Link } from 'react-router-dom';
 
 import useCategories from '../../utilities/hooks/useCategories';
+import useScrollToTop from '../../utilities/hooks/useScrollToTop';
 
 import FooterMobile from './FooterMobile';
 import Socials from './Socials';
@@ -11,6 +12,7 @@ import logo from '../../utilities/images/desktop/logo.svg';
 
 const Footer = () => {
   const categories = useCategories();
+  const scrollToTop = useScrollToTop();
 
   return (
     <footer
@@ -42,7 +44,10 @@ const Footer = () => {
 
         <div className="w-2/5 mt-[71px] flex flex-col justify-between items-end">
           <div className="flex items-center gap-[34px]">
-            <Link to="/" className="text-xsm text-white-full uppercase">
+            <Link
+              to="/"
+              className="text-xsm text-white-full uppercase cursor-pointer"
+              onClick={scrollToTop}>
               Home
             </Link>
 
@@ -51,7 +56,8 @@ const Footer = () => {
                 <Link
                   key={uuidv4()}
                   to={`/categories/${slug}`}
-                  className="text-xsm tracking-[2px] text-white-full uppercase">
+                  className="text-xsm tracking-[2px] text-white-full uppercase"
+                  onClick={scrollToTop}>
                   {category}
                 </Link>
               ))}
