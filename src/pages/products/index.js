@@ -10,7 +10,7 @@ const Products = () => {
     <main className="flex flex-col gap-43">
       {product && (
         <section className="2xl:w-[1110px] 2xl:mx-auto mt-5 2xl:mt-[79px] flex flex-col gap-8">
-          <p className="opacity-50" onClick={() => navigate(-1)}>
+          <p className="opacity-50 cursor-pointer" onClick={() => navigate(-1)}>
             Go Back
           </p>
           <Outlet />

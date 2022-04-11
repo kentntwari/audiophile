@@ -11,7 +11,7 @@ const Checkout = () => {
 
   return (
     <div className="2xl:w-[1110px] 2xl:mx-auto">
-      <section className="mt-5">
+      <section className="mt-5 2xl:mt-[79px]">
         <p className="opacity-50" onClick={() => navigate(-1)}>
           Go Back
         </p>
