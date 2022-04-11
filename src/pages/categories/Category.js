@@ -9,7 +9,7 @@ import ButtonOrange from '../../components/buttons/ButtonOrange';
 const Category = () => {
   const { category } = useParams();
 
-  const [...products] = useCategoryProducts(category);
+  const products = useCategoryProducts(category);
 
   return (
     <Fragment>
