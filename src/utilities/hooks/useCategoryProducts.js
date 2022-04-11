@@ -15,8 +15,11 @@ const useCategoryProducts = (param) => {
       .then(
         (results) =>
           isFetched &&
-          setCategoryProducts(() => results.filter((res) => res.category === param))
-      );
+          setCategoryProducts(
+            () => results && results.filter((res) => res.category === param)
+          )
+      )
+      .catch((error) => console.error(error));
 
     return () => (isFetched = false);
   }, [api, param]);

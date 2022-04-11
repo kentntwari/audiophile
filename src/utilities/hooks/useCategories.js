@@ -17,7 +17,10 @@ const useCategories = () => {
 
   useEffect(() => {
     let isFetched = true;
-    sanityClient.fetch(apiEndpoint).then((res) => isFetched && setCategories(res));
+    sanityClient
+      .fetch(apiEndpoint)
+      .then((res) => isFetched && setCategories(res))
+      .catch((error) => console.error(error));
 
     return () => (isFetched = false);
   }, [apiEndpoint]);

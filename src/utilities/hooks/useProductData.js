@@ -20,13 +20,16 @@ const useProductData = (productSlug, productCategory) => {
   useEffect(() => {
     let isFetched = true;
 
-    sanityClient.fetch(apiEndpoint_general_info).then((res) => {
-      if (isFetched && res !== null)
-        return setGeneralInfo(() => {
-          const filtered = res.filter(({ slug }) => slug === productSlug);
-          return filtered;
-        });
-    });
+    sanityClient
+      .fetch(apiEndpoint_general_info)
+      .then((res) => {
+        if (isFetched && res !== null)
+          return setGeneralInfo(() => {
+            const filtered = res.filter(({ slug }) => slug === productSlug);
+            return filtered;
+          });
+      })
+      .catch((error) => console.error(error));
 
     return () => (isFetched = false);
   }, [productSlug, apiEndpoint_general_info]);
@@ -49,15 +52,18 @@ const useProductData = (productSlug, productCategory) => {
   useEffect(() => {
     let isFetched = true;
 
-    sanityClient.fetch(apiEndpoint_new_product).then((res) => {
-      if (isFetched && res !== null)
-        return setIsNewProduct(() => {
-          return res
-            .filter(({ category }) => category === true)
-            .slice(0, 1)
-            .some(({ slug }) => slug === productSlug);
-        });
-    });
+    sanityClient
+      .fetch(apiEndpoint_new_product)
+      .then((res) => {
+        if (isFetched && res !== null)
+          return setIsNewProduct(() => {
+            return res
+              .filter(({ category }) => category === true)
+              .slice(0, 1)
+              .some(({ slug }) => slug === productSlug);
+          });
+      })
+      .catch((error) => console.error(error));
 
     return () => (isFetched = false);
   }, [productSlug, apiEndpoint_new_product]);
@@ -80,9 +86,12 @@ const useProductData = (productSlug, productCategory) => {
   useEffect(() => {
     let isFetched = true;
 
-    sanityClient.fetch(apiEndpoint_box_items).then((res) => {
-      if (isFetched && res !== null) return setBoxItems(() => res.boxItems);
-    });
+    sanityClient
+      .fetch(apiEndpoint_box_items)
+      .then((res) => {
+        if (isFetched && res !== null) return setBoxItems(() => res.boxItems);
+      })
+      .catch((error) => console.error(error));
 
     return () => (isFetched = false);
   }, [apiEndpoint_box_items]);
@@ -105,9 +114,12 @@ const useProductData = (productSlug, productCategory) => {
   useEffect(() => {
     let isFetched = true;
 
-    sanityClient.fetch(apiEndPoint_product_gallery).then((res) => {
-      if (isFetched && res !== null) return setProductGallery(() => res);
-    });
+    sanityClient
+      .fetch(apiEndPoint_product_gallery)
+      .then((res) => {
+        if (isFetched && res !== null) return setProductGallery(() => res);
+      })
+      .catch((error) => console.error(error));
 
     return () => (isFetched = false);
   }, [apiEndPoint_product_gallery]);
@@ -129,9 +141,12 @@ const useProductData = (productSlug, productCategory) => {
   useEffect(() => {
     let isFetched = true;
 
-    sanityClient.fetch(apiEndpoint_prompts).then((res) => {
-      if (isFetched && res !== null) return setPrompts(() => res);
-    });
+    sanityClient
+      .fetch(apiEndpoint_prompts)
+      .then((res) => {
+        if (isFetched && res !== null) return setPrompts(() => res);
+      })
+      .catch((error) => console.error(error));
 
     return () => (isFetched = false);
   }, [apiEndpoint_prompts]);
