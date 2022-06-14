@@ -13,7 +13,7 @@ const Category = () => {
 
   return (
     <Fragment>
-      {products.length > 0 &&
+      {products &&
         products.map(
           (
             { description, slug, image_mobile, image_tablet, image_desktop, title },
